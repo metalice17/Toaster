@@ -1,0 +1,65 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="style/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="toasterClass.js"></script>
+    <script type="text/javascript">
+        let Toaster;
+        let worker;
+        document.addEventListener('DOMContentLoaded', init);
+        function init(){
+            Toaster = new Notifications.Toaster();
+            var messageID;
+        }
+
+        function RequestData(){
+            worker = new Worker('web-work.js');
+            worker.addEventListener('message', workerPostBack);
+            worker.addEventListener('error', workerPostError);
+            $("#Response").empty();
+            messageID = Toaster.newSlice(document, 
+            {
+                'header':'Ajax Data',
+                'description': 'Fetching some remote data',
+                'message': 'Response expected in json format',
+                'left':'Start: ' + new Date().toLocaleString(),
+                'right':''
+            });
+            
+            worker.postMessage({
+                'method':'fetch',
+                'url':'http://jsonplaceholder.typicode.com/posts',
+                'delay': '4000'
+            });
+        }
+
+        function workerPostBack(ev){
+            let data = ev.data; 
+            $("#Response").html(JSON.stringify(data, null, 2) + '<\n>').wrap('<pre />');
+            Toaster.removeSlice(messageID, document, 
+            {
+                'right':'Stop:' + new Date().toLocaleString(),
+                'delay':5000,
+            });
+        }
+            
+        function workerPostError(err){
+            console.log(err.message, err.filename);
+        }
+
+    </script>
+</head>
+<body>
+    <button class="trigger" onclick="Toaster.newSlice(document, {'header':'Start','description': 'starting sub systems','message': 'a, b, c, d...', 'left':'', 'right':''});">
+        Add New Notification
+    </button>
+    <button class="trigger" onclick="Toaster.updateSlice(Toaster.ToastEvents[Toaster.ToastEvents.length-1], document, {'header':'Busy','description': 'running sub systems','message': 'a, b, c, d...', 'left':'', 'right':'', 'bgcolor':'red'});">
+        Update Last Notification
+    </button>
+    <button class="trigger" onclick="Toaster.removeSlice(Toaster.ToastEvents[Toaster.ToastEvents.length-1], document, {'header':'Stop','description': 'stopping sub systems','message': 'a, b, c, d...', 'left':'', 'right':''});">
+        Close Last Notification
+    </button>
+    <button class="trigger" onclick="RequestData();">
+        Ajax Request
+    </button>
+    <div id="Response" style="font-size: 5px;"></div>
+</body>

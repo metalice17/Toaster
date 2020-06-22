@@ -1,0 +1,55 @@
+.slider {
+    position: fixed;
+    width: 100%;
+    height: 56px;
+    top: 94%;
+    left: 0;
+    overflow: hidden;
+    background-color: rgba(236, 114, 0, 0.924); color: #FFF;
+    transition: all 3s;
+  }
+
+  .slider h3 {
+      font-size: 16px;
+      padding: 0px;
+      margin: 0px;
+  }
+
+  .slider p {
+      font-size: 12px;
+      padding: 0px;
+      margin: 0px;
+  }
+
+  .slider.close {
+    top: 100%;
+    height: 0;
+  }
+
+  .slider.complete {
+    background-color: rgb(13, 133, 33) !important; color: #FFF;
+  }
+
+  table {
+      width: 100%;
+      height: 56px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      color: #FFF;
+  }
+
+  table, td, th {
+      border: 0px solid black;
+      border-collapse: collapse;
+  }
+
+  table .content {
+      width: 80%;
+      text-align: center;
+  }
+
+  table .left .right {
+      width: 10%;
+      text-align: center;
+  }
