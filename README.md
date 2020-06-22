@@ -22,7 +22,7 @@ messageID = Toaster.newSlice(document,
 
 
 Prerequisites
-The minimum requirements for the miner are as follows:
+The minimum requirements for the class are as follows:
 
 jQuery 3.5.1
 
