@@ -2,12 +2,14 @@
     position: fixed;
     width: 100%;
     height: 56px;
-    top: 94%;
+    bottom: 1px;
     left: 0;
     overflow: hidden;
-    background-color: rgba(236, 114, 0, 0.924); color: #FFF;
+    background-color: rgba(202, 81, 0, 0.924);
+    color: #FFF;
     transition: all 3s;
-  }
+    z-index: 39998 !important;
+}
 
   .slider h3 {
       font-size: 16px;
@@ -22,7 +24,6 @@
   }
 
   .slider.close {
-    top: 100%;
     height: 0;
   }
 
@@ -30,26 +31,26 @@
     background-color: rgb(13, 133, 33) !important; color: #FFF;
   }
 
-  table {
+  table.toaster {
       width: 100%;
-      height: 56px;
+      height: 100%;
       text-align: center;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 10px;
       color: #FFF;
   }
 
-  table, td, th {
+  table.toaster, td, th {
       border: 0px solid black;
       border-collapse: collapse;
   }
 
-  table .content {
+  table.toaster .content {
       width: 80%;
       text-align: center;
   }
 
-  table .left .right {
+  table.toaster .left .right {
       width: 10%;
       text-align: center;
   }
