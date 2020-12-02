@@ -25,9 +25,3 @@ Prerequisites
 The minimum requirements for the class are as follows:
 
 jQuery 3.5.1
-
-About the DONATION
-If you like what we have done and would like to donate anything to say thank you, or further the project:
-ETH Donation Address: 0x715cef27f25040091da96ed76b83a7d5323012c7
-
-
