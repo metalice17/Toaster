@@ -1,3 +1,13 @@
+<!-- Toaster is a user-friendly open-source Toast Notification Template Class for web-based applications.
+
+You can link and use the class in any website by included the stylesheet file and class file. Please carefully read Prerequisites before execution.
+
+Currently, the class supports and was tested on the following versions: jQuery 3.5.1 I have included an example html file to test the functionality of the class. You can edit the css file as needed to change the location of the toast notification as well as the color scheme as needed. You can set the delay speed in the post to delay the notification display period as needed. A typical slice (new toast notification) will look as follows: messageID = Toaster.newSlice(document, { 'header':'Ajax Data', 'description': 'Fetching some remote data', 'message': 'Response expected in json format', 'left':'Start: ' + new Date().toLocaleString(), 'right':'' });
+
+Prerequisites The minimum requirements for the class are as follows:
+
+jQuery 3.5.1
+GNU GENERAL PUBLIC LICENSE -->
 <head>
     <link rel="stylesheet" type="text/css" href="style/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -22,13 +32,14 @@
                 'description': 'Fetching some remote data',
                 'message': 'Response expected in json format',
                 'left':'Start: ' + new Date().toLocaleString(),
-                'right':''
+                'right':'loading'
             });
             
             worker.postMessage({
                 'method':'fetch',
                 'url':'http://jsonplaceholder.typicode.com/posts',
-                'delay': '4000'
+                'delay': '4000',
+                'right':'complete'
             });
         }
 
@@ -39,6 +50,7 @@
             {
                 'right':'Stop:' + new Date().toLocaleString(),
                 'delay':5000,
+                'right':'complete'
             });
         }
             
@@ -49,13 +61,13 @@
     </script>
 </head>
 <body>
-    <button class="trigger" onclick="Toaster.newSlice(document, {'header':'Start','description': 'starting sub systems','message': 'a, b, c, d...', 'left':'', 'right':''});">
+    <button class="trigger" onclick="Toaster.newSlice(document, {'header':'HEADER','description': 'starting sub systems','message': 'a, b, c, d...', 'right':'loading'});">
         Add New Notification
     </button>
-    <button class="trigger" onclick="Toaster.updateSlice(Toaster.ToastEvents[Toaster.ToastEvents.length-1], document, {'header':'Busy','description': 'running sub systems','message': 'a, b, c, d...', 'left':'', 'right':'', 'bgcolor':'red'});">
+    <button class="trigger" onclick="Toaster.updateSlice(Toaster.ToastEvents[Toaster.ToastEvents.length-1], document, {'header':'Busy','description': 'running sub systems','message': 'a, b, c, d...', 'right':'error'});">
         Update Last Notification
     </button>
-    <button class="trigger" onclick="Toaster.removeSlice(Toaster.ToastEvents[Toaster.ToastEvents.length-1], document, {'header':'Stop','description': 'stopping sub systems','message': 'a, b, c, d...', 'left':'', 'right':''});">
+    <button class="trigger" onclick="Toaster.removeSlice(Toaster.ToastEvents[Toaster.ToastEvents.length-1], document, {'header':'Stop','description': 'stopping sub systems','message': 'a, b, c, d...', 'right':'complete'});">
         Close Last Notification
     </button>
     <button class="trigger" onclick="RequestData();">
