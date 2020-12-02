@@ -1,8 +1,8 @@
 # Toaster
 Toaster is a user-friendly open-source Toast Notification Template Class for web-based applications. 
 <br><br>
-<img src="https://snipboard.io/ofWBFz.jpg" alt="ScreenShot"><br>
-<img src="https://snipboard.io/NBbYtp.jpg" alt="ScreenShot2"><br>
+<img src="https://snipboard.io/KPWvGl.jpg" alt="ScreenShot"><br>
+<img src="https://snipboard.io/ZdST2o.jpg" alt="ScreenShot2"><br>
 
 You can link and use the class in any website by included the stylesheet file and class file. Please carefully read Prerequisites before execution.
 
@@ -17,7 +17,7 @@ messageID = Toaster.newSlice(document,
                 'description': 'Fetching some remote data',
                 'message': 'Response expected in json format',
                 'left':'Start: ' + new Date().toLocaleString(),
-                'right':''
+                'right':'loading'
             });
 
 
